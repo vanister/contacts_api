@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "firstName": "Luke",
+    "lastName": "Skywalker",
+    "phones": [
+      {
+        "country": 1,
+        "area": 425,
+        "no": 5551234
+      }
+    ],
+    "addresses": [
+      {
+        "address1": "456 Some Other Street",
+        "city": "Bellevue",
+        "state": "WA",
+        "zip": 98004
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "firstName": "Jin",
+    "lastName": "Erso",
+    "phones": [
+      {
+        "country": 1,
+        "area": 206,
+        "no": 8675309,
+        "ext": 123
+      }
+    ],
+    "addresses": [
+      {
+        "address1": "123 Some Street",
+        "address2": "Apt 456",
+        "city": "Seattle",
+        "state": "WA",
+        "zip": 98101
+      }
+    ]
+  }
+]

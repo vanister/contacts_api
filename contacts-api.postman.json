@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "35d33b95-e9cb-4319-b7b6-911d38e785c3",
+		"name": "Contacts API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{baseurl}}/contacts",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get contact by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{baseurl}}/contact/1",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"contact",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add contact (id: 3)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Kylo\",\n\t\"lastName\": \"Ren\",\n\t\"phones\": [\n\t    {\n\t        \"area\": 425,\n\t        \"country\": 1,\n\t        \"no\": 5556789\n\t    }\n\t],\n\t\"addresses\": [\n\t    {\n\t        \"zip\": 98004,\n\t        \"state\": \"WA\",\n\t        \"city\": \"Bellevue\",\n\t        \"address1\": \"789 Some Other Street\"\n\t    }\n\t],\n\t\"id\": \"3\"\n}"
+				},
+				"url": {
+					"raw": "{{baseurl}}/contact",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update contact (id: 3)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Kylo\",\n\t\"lastName\": \"Ren Updated\",\n\t\"phones\": [\n\t    {\n\t        \"area\": 425,\n\t        \"country\": 1,\n\t        \"no\": 5556789\n\t    }\n\t],\n\t\"addresses\": [\n\t    {\n\t        \"zip\": 98004,\n\t        \"state\": \"WA\",\n\t        \"city\": \"Bellevue\",\n\t        \"address1\": \"789 Some Other Street\",\n\t        \"address2\": \"Apt 10\"\n\t    }\n\t],\n\t\"id\": \"3\"\n}"
+				},
+				"url": {
+					"raw": "{{baseurl}}/contact/3",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"contact",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete contact (id: 3)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{baseurl}}/contact/3",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"contact",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

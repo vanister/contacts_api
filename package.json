@@ -1,0 +1,30 @@
+{
+  "name": "contacts-api",
+  "version": "1.0.0",
+  "description": "Contacts API",
+  "scripts": {
+    "sls": "serverless",
+    "seed": "node ./seed/runner.js",
+    "start": "sls offline start",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "nodejs",
+    "aws",
+    "lamdas",
+    "serverless",
+    "dynamodb",
+    "jest",
+    "es6"
+  ],
+  "author": "Van H",
+  "license": "MIT",
+  "devDependencies": {
+    "aws-sdk": "^2.286.2",
+    "dotenv": "^6.0.0",
+    "jest": "^23.4.2",
+    "serverless": "^1.29.1",
+    "serverless-offline": "^3.25.6"
+  }
+}

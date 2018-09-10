@@ -1,0 +1,23 @@
+
+# handler paths are relative to the root serverless.yml file that this is being merged into
+# they are also compiled by babel into a 'dist' folder at the root
+list:
+  handler: src/handlers/contacts/list.handler
+  events:
+    - http: get /contacts
+get:
+  handler: src/handlers/contacts/get.handler
+  events:
+    - http: get /contact/{id}
+add:
+  handler: src/handlers/contacts/add.handler
+  events:
+    - http: post /contact
+update:
+  handler: src/handlers/contacts/update.handler
+  events:
+    - http: put /contact/{id}
+delete:
+  handler: src/handlers/contacts/delete.handler
+  events:
+    - http: delete /contact/{id}
