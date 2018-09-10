@@ -24,7 +24,10 @@ DynamoDB Local
     - Open a browser at: `http://localhost:8000/shell` to interact with DynamoDB through the interactive shell.
 
 Lambda Functions
-
+  
+  - Run `npm run seed` to seed some test data.
   - Run `npm start` to start the functions locally.
 
 Test by trying to hit an Api endpoint in the Postman.
+  
+  - `http://localhost:3000/contacts/`
