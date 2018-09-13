@@ -2,6 +2,10 @@
   "name": "contacts-api",
   "version": "1.0.0",
   "description": "Contacts API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanister/contacts_api"
+  },
   "scripts": {
     "sls": "serverless",
     "seed": "node ./seed/runner.js",
