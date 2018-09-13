@@ -27,7 +27,10 @@ exports.handler = async (event) => {
     return badRequest();
   }
 
-  await repository.put(contact);
+  // todo: merge or overwrite?
+  const updatedContact = Object.assign({}, existingContact, contact);
 
-  return ok(contact);
+  await repository.put(updatedContact);
+
+  return ok(updatedContact);
 };
