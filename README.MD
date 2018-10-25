@@ -28,8 +28,8 @@ DynamoDB Local
     - Open a browser at: `http://localhost:8000/shell` to interact with DynamoDB through the interactive shell.
 
 ...Or LocalStack Docker container
-  - Run `docker-compose up -d`
-  - If you already run the `docker-compose.yml` file and didn't teardown the container, start it again with, `docker-compose start`.
+  - Run `docker-compose -f docker-compose.localstack.yml up -d`
+  - If you already ran the command above to create the container, start it again with, `docker-compose start`.
 
 Lambda Functions
 
@@ -38,4 +38,4 @@ Lambda Functions
 
 Test by trying to hit an Api endpoint in the Postman.
 
-  - `http://localhost:3000/contacts/`
+  - `curl -i http://localhost:3000/contacts/`
