@@ -1,4 +1,4 @@
-service: address-book-api 
+service: address-book-api
 
 provider:
   name: aws
@@ -11,3 +11,7 @@ functions:
 
 plugins:
   - serverless-offline
+
+custom:
+  serverless-offline:
+    host: 0.0.0.0 # for docker container hosting

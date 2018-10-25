@@ -29,7 +29,7 @@ DynamoDB Local
 
 ...Or LocalStack Docker container
   - Run `docker-compose up -d`
-  - If you already run the `docker-compose.yml` file and didn't teardown the container, start it again with, `docker start dynamodb_localstack`, which is the name defined in the `docker-compose.yml` file.
+  - If you already run the `docker-compose.yml` file and didn't teardown the container, start it again with, `docker-compose start`.
 
 Lambda Functions
 
