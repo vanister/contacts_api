@@ -2,7 +2,7 @@
 
 ## Setup
 
-NOTE: If you have Docker installed, instead of installing Java and downloading the DynamoDb-Local jar file to run, you can run `docker-compose up -d` command against the `docker-compose.yml` file in this project to set up DynamoDb running instead of LocalStack with persisted data turned on.
+NOTE: If you have Docker installed, instead of installing Java and downloading the DynamoDb-Local jar file to run, you can run `docker-compose up -d localstack` command against the `docker-compose.yml` file in this project to set up DynamoDb running in a LocalStack container with persisted data turned on.
 
 ---
 
@@ -28,7 +28,7 @@ DynamoDB Local
     - Open a browser at: `http://localhost:8000/shell` to interact with DynamoDB through the interactive shell.
 
 ...Or LocalStack Docker container
-  - Run `docker-compose up -d`
+  - Run `docker-compose up -d localstack`
   - If you already run the `docker-compose.yml` file and didn't teardown the container, start it again with, `docker-compose start`.
 
 Lambda Functions
@@ -36,6 +36,6 @@ Lambda Functions
   - Run `npm run seed` to seed some test data.
   - Run `npm start` to start the functions locally.
 
-Test by trying to hit an Api endpoint in the Postman.
+Test by trying to hit an Api endpoint.
 
-  - `http://localhost:3000/contacts/`
+  - `curl -i localhost:3000/contacts`
