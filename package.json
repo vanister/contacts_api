@@ -20,7 +20,8 @@
     "serverless",
     "dynamodb",
     "jest",
-    "es6"
+    "es6",
+    "docker"
   ],
   "author": "Van H",
   "license": "MIT",
