@@ -11,7 +11,8 @@
     "seed": "node ./seed/runner.js",
     "start": "sls offline start",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "deploy": "serverless deploy --aws-profile serverless"
   },
   "keywords": [
     "nodejs",
