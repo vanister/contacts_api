@@ -25,11 +25,13 @@
   ],
   "author": "Van H",
   "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.2.0"
+  },
   "devDependencies": {
-    "aws-sdk": "^2.336.0",
-    "dotenv": "^6.1.0",
+    "aws-sdk": "^2.375.0",
     "jest": "^23.6.0",
-    "serverless": "^1.32.0",
-    "serverless-offline": "^3.27.0"
+    "serverless": "^1.34.1",
+    "serverless-offline": "^3.31.3"
   }
 }
