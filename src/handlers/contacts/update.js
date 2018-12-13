@@ -7,7 +7,7 @@ const { withProcessEnv } = require('../../dynamodb.factory');
 
 const docClient = withProcessEnv(process.env)();
 const repository = new ContactRepository(docClient);
-const ok = withStatusCode(200);
+const ok = withStatusCode(200, JSON.stringify);
 const badRequest = withStatusCode(400);
 const notFound = withStatusCode(404);
 const parseJson = parseWith(JSON.parse);
