@@ -1,20 +1,39 @@
-describe('Dynamo DB factory', () => {
-  const mockDocumentClient = jest.fn();
 
-  jest.mock('aws-sdk/clients/dynamodb', () => ({ DocumentClient: mockDocumentClient }));
+const mockDocumentClient = jest.fn();
 
-  beforeEach(() => {
-    jest.resetAllMocks();
+const mockProcessEnv = {
+  AWS_ENDPOINT: 'test-endpoint',
+  AWS_REGION: 'us-west-2',
+  IS_OFFLINE: 'true',
+};
+
+jest.mock('aws-sdk/clients/dynamodb', () => ({ DocumentClient: mockDocumentClient }));
+
+const { withProcessEnv } = require('./dynamodb.factory');
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
+
+test('should get an instance of a DocumentClient', () => {
+  const documentClientCreator = withProcessEnv(mockProcessEnv);
+  const docClient = documentClientCreator();
+
+  expect(docClient).toBeDefined();
+
+  expect(mockDocumentClient).toHaveBeenCalledWith({
+    endpoint: 'test-endpoint',
+    region: 'us-west-2'
   });
+});
 
-  it('should get an instance of a DocumentClient', () => {
-    const { withProcessEnv } = require('./dynamodb.factory');
+test('should create a DocumentClient without configs', () => {
+  const notOffline = { IS_OFFLINE: undefined };
 
-    const documentClientCreator = withProcessEnv({});
-    const docClient = documentClientCreator();
+  const documentClientCreator = withProcessEnv(notOffline);
+  const docClient = documentClientCreator();
 
-    expect(docClient).toBeDefined();
+  expect(docClient).toBeDefined();
 
-    expect(mockDocumentClient).toHaveBeenCalled();
-  });
+  expect(mockDocumentClient).toHaveBeenCalledWith(undefined);
 });

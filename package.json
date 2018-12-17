@@ -12,7 +12,8 @@
     "start": "sls offline start",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "deploy": "serverless deploy --aws-profile serverless"
+    "deploy": "serverless deploy --aws-profile serverless",
+    "package": "serverless package"
   },
   "keywords": [
     "nodejs",

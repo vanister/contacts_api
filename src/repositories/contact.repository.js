@@ -4,16 +4,18 @@
 class ContactRepository {
   get _baseParams() {
     return {
-      TableName: 'contacts'
+      TableName: this._tableName
     };
   }
 
   /**
    * Contructs a new contact repository
-   * @param {AWS.DynamoDB.DocumentClient} documentClient The Document Client 
+   * @param {AWS.DynamoDB.DocumentClient} documentClient The Document Client.
+   * @param {string} tableName The table name.
    */
-  constructor(documentClient) {
+  constructor(documentClient, tableName) {
     this._documentClient = documentClient;
+    this._tableName = tableName;
   }
 
   /**

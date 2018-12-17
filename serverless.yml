@@ -1,10 +1,65 @@
-service: address-book-api
+service: contacts-api
+
+frameworkVersion: ">=1.3.0 <2.0.0"
 
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
-  region: us-west-2
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-west-2'}
+  environment:
+    CONTACTS_TABLE: ${self:service}-${self:provider.stage}-${self:custom.contactsTable}
+  iamRoleStatements:
+    # allow all of the functions to use this role to access dynamodb
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.CONTACTS_TABLE}'
+
+resources:
+  Resources:
+    # define the dynamodb table to be created
+    ContactsDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.CONTACTS_TABLE}
+
+package:
+  exclude:
+    - seed/**
+    - coverage/**
+    - .vscode/**
+    - .dockerignore
+    - .editorconfig
+    - .env
+    - .gitignore
+    - Dockerfile
+    - README.MD
+    - '*.{ts,js,json,yml}' # the rest of the configs
+
+  # excludes are added first
+  include:
+    - src/**
+    # exclude the tests and yml files from src
+    - '!src/**/*.spec.js'
+    - '!src/**/*.serverless.yml'
 
 functions:
   - '${file(src/handlers/contacts/contacts.serverless.yml)}'
@@ -13,5 +68,9 @@ plugins:
   - serverless-offline
 
 custom:
+  # vars
+  contactsTable: 'contacts'
+
+  # plugins
   serverless-offline:
     host: 0.0.0.0 # for docker container hosting

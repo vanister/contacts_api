@@ -29,8 +29,7 @@ describe('Contacts', () => {
     withProcessEnv: (env) => jest.fn()
   };
 
-  jest.mock('aws-sdk/clients/dynamodb', () => ({ DocumentClient: jest.fn() }));
-  jest.mock('../../repositories/contact.repository', () => ({ ContactRepository: jest.fn(() => mockContactRepository) }));
+  jest.mock('../../utils/repository.util', () => ({ createRepository: (env) => (tbl) => mockContactRepository }))
   jest.mock('../../utils/response.util', () => mockResponseUtil);
   jest.mock('../../utils/request.util', () => mockRequestUtil);
 

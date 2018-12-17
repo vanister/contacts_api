@@ -4,11 +4,9 @@ describe('Contacts Repository', () => {
   /** @type {AWS.DynamoDB.DocumentClient} */
   const mockDocClient = {
     scan: params => { },
-    // query: params => mockAwsRequest,
     get: params => { },
     put: params => { },
     delete: params => { },
-    // update: params => { }
   };
 
   const mockContacts = [
@@ -23,11 +21,13 @@ describe('Contacts Repository', () => {
     };
   };
 
+  const CONTACTS_TABLE = 'unit-test-contacts-table';
+
   /** @type {ContactsRepository} */
   let respository;
 
   beforeEach(() => {
-    respository = new ContactRepository(mockDocClient);
+    respository = new ContactRepository(mockDocClient, CONTACTS_TABLE);
   });
 
   it('should construct a new respository', () => {
@@ -42,7 +42,7 @@ describe('Contacts Repository', () => {
     spyOn(mockDocClient, 'scan').and.returnValues(createAwsRequest(expectedResult), createAwsRequest({ Items: null }));
 
     const awsParams = {
-      TableName: 'contacts'
+      TableName: CONTACTS_TABLE
     };
 
     const results = await respository.list();
@@ -78,7 +78,7 @@ describe('Contacts Repository', () => {
 
     const id = '1';
     const awsParams = {
-      TableName: 'contacts',
+      TableName: CONTACTS_TABLE,
       Key: { id }
     };
 
@@ -98,7 +98,7 @@ describe('Contacts Repository', () => {
     };
 
     const awsParams = {
-      TableName: 'contacts',
+      TableName: CONTACTS_TABLE,
       Item: newContact
     };
 
@@ -112,7 +112,7 @@ describe('Contacts Repository', () => {
     spyOn(mockDocClient, 'delete').and.returnValue(createAwsRequest());
 
     const id = '1';
-    const awsParams = { TableName: 'contacts', Key: { id } };
+    const awsParams = { TableName: CONTACTS_TABLE, Key: { id } };
 
     const deletedid = await respository.delete(id);
 

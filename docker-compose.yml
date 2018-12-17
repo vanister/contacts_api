@@ -7,24 +7,25 @@ services:
     build: .
     image: vanister/contacts_api
     depends_on:
-      - localstack
+      - dynamodb
     ports:
       - '3000:3000'
     container_name: contacts_api
 
     # these are the environment variables that are used in the api
     environment:
-      AWS_ENDPOINT: 'http://dynamodb_localstack:8000' # localstack container host for dynamodb
+      AWS_ENDPOINT: 'http://ls_dynamodb:8000' # localstack container host for dynamodb
       AWS_REGION: 'us-west-2'
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
+      CONTACTS_TABLE: 'contacts-api-docker-contacts'
 
-  localstack:
+  dynamodb:
     image: localstack/localstack:latest
     ports:
       - '8000:8000' # using port 8000 to be consistent with dynamodb local jar
       - '8080:8080' # the localstack admin portal
-    container_name: dynamodb_localstack
+    container_name: ls_dynamodb
     environment:
       SERVICES: dynamodb:8000
       DATA_DIR: '/tmp/localstack/data'

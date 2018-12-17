@@ -5,29 +5,28 @@ const { DynamoDB } = require('aws-sdk');
 const { DocumentClient } = DynamoDB;
 const contactsData = require('./contacts-test-data.json');
 
+const { CONTACTS_TABLE } = process.env;
 const dynamo = new DynamoDB({
   endpoint: process.env.AWS_ENDPOINT,
-  region: process.env.AWS_REGION,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  region: process.env.AWS_REGION
 });
 
 const doclient = new DocumentClient({ service: dynamo });
-const contactSeeder = new ContactSeeder(dynamo, doclient);
+const contactSeeder = new ContactSeeder(dynamo, doclient, CONTACTS_TABLE);
 
 const log = (...mgs) => console.log('>>', ...mgs);
 
 const seedContacts = async () => {
-  log(`Checking if 'contacts' table exists`);
+  log(`Checking if '${CONTACTS_TABLE}' table exists`);
 
   const exists = await contactSeeder.hasTable();
 
   if (exists) {
-    log(`Table 'contacts' exists, deleting`);
+    log(`Table '${CONTACTS_TABLE}' exists, deleting`);
     await contactSeeder.deleteTable();
   }
 
-  log(`Creating 'contacts' table`);
+  log(`Creating '${CONTACTS_TABLE}' table`);
   await contactSeeder.createTable();
 
   log('Seeding data');

@@ -15,5 +15,6 @@ EXPOSE 3000
 # ENV AWS_REGION='us-west-1'
 # ENV AWS_ACCESS_KEY_ID='from-dockerfile-fake-access-key'
 # ENV AWS_SECRET_ACCESS_KEY='from-dockerfile-fake-secret-key'
+# ENV CONTACTS_TABLE='contacts-api-docker-contacts'
 
 CMD [ "npm", "start" ]
