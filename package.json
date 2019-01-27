@@ -6,13 +6,8 @@
     "type": "git",
     "url": "https://github.com/vanister/contacts_api"
   },
-  "scripts": {
-    "sls": "serverless",
-    "seed": "node ./seed/runner.js",
-    "start": "sls offline start",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
-  },
+  "author": "Van H",
+  "license": "MIT",
   "keywords": [
     "nodejs",
     "aws",
@@ -23,8 +18,18 @@
     "es6",
     "docker"
   ],
-  "author": "Van H",
-  "license": "MIT",
+  "scripts": {
+    "sls": "serverless",
+    "seed": "node ./seed/runner.js",
+    "start": "sls offline start",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "deploy": "serverless deploy --aws-profile serverless",
+    "package": "serverless package"
+  },
+  "engines": {
+    "node": "~8.10.0"
+  },
   "dependencies": {
     "dotenv": "^6.2.0"
   },
