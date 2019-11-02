@@ -2,11 +2,12 @@
   "name": "contacts-api",
   "version": "1.0.0",
   "description": "Contacts API",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/vanister/contacts_api"
   },
-  "author": "Van H",
+  "author": "vanister",
   "license": "MIT",
   "keywords": [
     "nodejs",
@@ -28,15 +29,15 @@
     "package": "serverless package"
   },
   "engines": {
-    "node": "~8.10.0"
+    "node": "~10.16.0"
   },
   "dependencies": {
-    "dotenv": "^6.2.0"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.375.0",
-    "jest": "^23.6.0",
-    "serverless": "^1.34.1",
-    "serverless-offline": "^3.31.3"
+    "aws-sdk": "^2.561.0",
+    "jest": "^24.9.0",
+    "serverless": "^1.56.1",
+    "serverless-offline": "^5.12.0"
   }
 }
