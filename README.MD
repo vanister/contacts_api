@@ -1,5 +1,7 @@
 # Contacts API
 
+Source for the article: [Build a RESTful API using AWS Lambda, API Gateway, DynamoDB and the Serverless Framework](https://itnext.io/build-a-restful-api-using-aws-lambda-api-gateway-dynamodb-and-the-serverless-framework-30fc68e08a42)
+
 ## Setup
 
 NOTE: If you have Docker installed, instead of installing Java and downloading the DynamoDb-Local jar file to run, you can run `docker-compose up -d localstack` command against the `docker-compose.yml` file in this project to set up DynamoDb running in a LocalStack container with persisted data turned on.
