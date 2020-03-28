@@ -29,15 +29,15 @@
     "package": "serverless package"
   },
   "engines": {
-    "node": "~10.16.0"
+    "node": "~12.16.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.573.0",
-    "jest": "^24.9.0",
-    "serverless": "^1.57.0",
-    "serverless-offline": "^5.12.0"
+    "aws-sdk": "^2.648.0",
+    "jest": "^25.2.3",
+    "serverless": "^1.67.0",
+    "serverless-offline": "^6.1.2"
   }
 }
