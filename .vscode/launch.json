@@ -15,17 +15,20 @@
       ]
     },
     {
+      "name": "Debug Jest - Current File",
       "type": "node",
       "request": "launch",
-      "name": "Debug Test - Current File",
-      "program": "${workspaceFolder}/node_modules/.bin/jest",
       "runtimeArgs": [
-        "--nolazy"
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
       ],
       "args": [
-        "${file}",
-        "--runInBand"
-      ]
+        "${fileBasenameNoExtension}"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 9229
     }
   ]
 }
