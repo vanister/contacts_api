@@ -23,6 +23,7 @@ services:
     image: localstack/localstack:latest
     ports:
       - '8000:8000' # using port 8000 to be consistent with dynamodb local jar
+      - '4566:4566' # new dynamodb port
       - '8080:8080' # the localstack admin portal
     container_name: dynamodb_localstack
     environment:

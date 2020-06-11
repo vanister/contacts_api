@@ -1,6 +1,6 @@
 # use this dockerfile to build an image for this api
 
-FROM node:8.12.0
+FROM node:12.18.0
 
 WORKDIR /usr/src/app
 COPY package*.json ./
