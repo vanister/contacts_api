@@ -1,4 +1,3 @@
-
 class ContactSeeder {
   /**
    * Constructs a new Contacts seeder
