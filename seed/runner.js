@@ -1,15 +1,17 @@
 require('dotenv/config');
 
-const { ContactSeeder } = require('./contact.seeder');
-const { DynamoDB } = require('aws-sdk');
+const AWS = require('aws-sdk');
+const { DynamoDB } = AWS;
 const { DocumentClient } = DynamoDB;
+
+const { ContactSeeder } = require('./contact.seeder');
 const contactsData = require('./contacts-test-data.json');
 
 const dynamo = new DynamoDB({
   endpoint: process.env.AWS_ENDPOINT,
   region: process.env.AWS_REGION,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
 const doclient = new DocumentClient({ service: dynamo });
@@ -34,6 +36,10 @@ const seedContacts = async () => {
   await contactSeeder.seed(contactsData);
 };
 
-seedContacts()
-  .then(() => log('Done!'))
-  .catch(err => console.log(err));
+(async () => {
+  try {
+    await seedContacts();
+  } catch (error) {
+    console.error(error);
+  }
+})();
