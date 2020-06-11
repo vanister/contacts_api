@@ -25,6 +25,7 @@
     "start": "sls offline start",
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "test:v": "npm test -- --verbose",
     "deploy": "serverless deploy --aws-profile serverless",
     "package": "serverless package"
   },
@@ -35,9 +36,9 @@
     "dotenv": "^8.2.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.648.0",
-    "jest": "^25.2.3",
-    "serverless": "^1.67.0",
-    "serverless-offline": "^6.1.2"
+    "aws-sdk": "^2.694.0",
+    "jest": "^26.0.1",
+    "serverless": "^1.72.0",
+    "serverless-offline": "^6.4.0"
   }
 }
