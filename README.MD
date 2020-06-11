@@ -14,7 +14,7 @@ Download the DynamoDb-Local jar file for your system [here](https://docs.aws.ama
 
 Create a `.env` file at the root of the project and add in your own values for these enviornment variables.
 
-  - `AWS_ENDPOINT='http://localhost:8000/'`
+  - `AWS_ENDPOINT='http://localhost:8000/'` `# or http://localhost:4566`
   - `AWS_REGION='localhost'`
   - `AWS_ACCESS_KEY_ID='fake-access-key'`
   - `AWS_SECRET_ACCESS_KEY='fake-secret-key'`
